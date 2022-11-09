@@ -15,17 +15,19 @@ Tested with ORB-SLAM3 V1.0, primarily on Ubuntu 20.04.
 
 # Installation
 
-General guide: first, install ORB-SLAM3 normally with all of its dependencies (any location is fine). Then, install this package in a ```catkin build``` environment.
-
+First, install ORB-SLAM3 either directly from the source (if you prefer no guiding):[ORB-SLAM3 Original repos](https://github.com/UZ-SLAMLab/ORB_SLAM3)
+Or if you prefer the guided (for noobs) experience:
 ## 1. ORB-SLAM3
 
-- Install [ORB-SLAM 3](https://github.com/discoimp/ORB_SLAM3#2-prerequisites).
+- Install [ORB-SLAM 3 noob edition](https://github.com/discoimp/ORB_SLAM3#2-prerequisites) and come back here.
+
 - Make sure that **`libORB_SLAM3.so`** is created in the *ORB_SLAM3/lib* folder. If not, check the issue list from the [original repo](https://github.com/UZ-SLAMLab/ORB_SLAM3/issues) and retry.
 
 ## 2. orb_slam3_ros_wrapper
 
-- Clone the package. Note that it should be a `catkin build` workspace.
-If you don't have a catkin workspace 
+- Clone this package. Note that it should be a `catkin build` workspace.
+If you don't have a catkin workspace (and let's say don't know what it is), you can install this [Event-camera driver](https://github.com/discoimp/rpg_dvs_ros#driver-installation) and get the workspace as a bonus (or simply use google).
+With a operative catkin workspace continue the installation
 ```
 cd ~/catkin_ws/src/
 git clone https://github.com/discoimp/orb_slam3_ros_wrapper.git
@@ -37,12 +39,16 @@ catkin build
 ```
 
 - Next, copy the `ORBvoc.txt` file from `ORB-SLAM3/Vocabulary/`
-(If you followed the instruction for installing Orb Slam 3 from the Discoimp fork run this:
+(If you followed the instruction for installing Orb Slam 3 from the Discoimp fork, just run this command:
 ```
 cd ~/Dev/ORB_SLAM3/Vocabulary/ && tar -xf ORBvoc.txt.tar.gz -C ~/catkin_ws/src/orb_slam3_ros_wrapper/config/
+
+#you can now delete the container (optional)
+rm ORBvoc.txt.tar.gz
 ```
 
-- If everything works fine, you can now try the different launch files in the `launch` folder.
+- If everything went fine, you can try the different launch files in the `launch` folder.
+- If not, try the following the repos I copied to create this (in case I made a mistake): [thien94/orb_slam3_ros_wrapper](https://github.com/thien94/orb_slam3_ros_wrapper)
 
 ## 3. How to run
 
