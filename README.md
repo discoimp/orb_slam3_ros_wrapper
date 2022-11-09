@@ -53,6 +53,7 @@ rm ORBvoc.txt.tar.gz
 ## 3. How to run
 
 ### EuRoC dataset:
+NOTE: Currently getting error: Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 
 - In one terminal, launch the node:
 ```
