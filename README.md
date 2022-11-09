@@ -19,52 +19,27 @@ General guide: first, install ORB-SLAM3 normally with all of its dependencies (a
 
 ## 1. ORB-SLAM3
 
-- Install the [prerequisites](https://github.com/UZ-SLAMLab/ORB_SLAM3#2-prerequisites).
-- Clone ORB-SLAM3:
-```
-cd ~
-git clone https://github.com/UZ-SLAMLab/ORB_SLAM3.git ORB_SLAM3
-```
-- Make changes to the source code if necessary to build successfully. For Ubuntu 20.04, you will need to change CMakeList from C++11 to C++14. I have incorporated the changes in [this fork](
-https://github.com/thien94/ORB_SLAM3).
-- Build:
-```
-cd ORB_SLAM3
-chmod +x build.sh
-./build.sh
-```
+- Install [ORB-SLAM 3](https://github.com/discoimp/ORB_SLAM3#2-prerequisites).
 - Make sure that **`libORB_SLAM3.so`** is created in the *ORB_SLAM3/lib* folder. If not, check the issue list from the [original repo](https://github.com/UZ-SLAMLab/ORB_SLAM3/issues) and retry.
 
 ## 2. orb_slam3_ros_wrapper
 
 - Clone the package. Note that it should be a `catkin build` workspace.
+If you don't have a catkin workspace 
 ```
 cd ~/catkin_ws/src/
-git clone https://github.com/thien94/orb_slam3_ros_wrapper.git
+git clone https://github.com/discoimp/orb_slam3_ros_wrapper.git
 ```
-
-- Open `CMakeLists.txt` and change the directory that leads to ORB-SLAM3 library at the beginning of the file (default is home folder `~/`)
-```
-cd ~/catkin_ws/src/orb_slam3_ros_wrapper/
-nano CMakeLists.txt
-
-# Change this to your installation of ORB-SLAM3. Default is ~/
-set(ORB_SLAM3_DIR
-   $ENV{HOME}/ORB_SLAM3
-)
-```
-
 - Build the package normally.
 ```
 cd ~/catkin_ws/
 catkin build
 ```
 
-- Next, copy the `ORBvoc.txt` file from `ORB-SLAM3/Vocabulary/` folder to the `config` folder in this package. Alternatively, you can change the `voc_file` param in the launch file to point to the right location.
-
-- (Optional) Install `hector-trajectory-server` to visualize the trajectory.
+- Next, copy the `ORBvoc.txt` file from `ORB-SLAM3/Vocabulary/`
+(If you followed the instruction for installing Orb Slam 3 from the Discoimp fork run this:
 ```
-sudo apt install ros-[DISTRO]-hector-trajectory-server
+cd ~/Dev/ORB_SLAM3/Vocabulary/ && tar -xf ORBvoc.txt.tar.gz -C ~/catkin_ws/src/orb_slam3_ros_wrapper/config/
 ```
 
 - If everything works fine, you can now try the different launch files in the `launch` folder.
